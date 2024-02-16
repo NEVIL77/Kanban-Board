@@ -1,0 +1,80 @@
+body{
+    width: 100%;
+    height: 100%;
+    background-color: grey;
+    margin: 0px;
+    padding: 0px;
+}
+* {
+    box-sizing: border-box;
+}
+header{
+    width: 100%;
+    height: 5rem;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+.toolbox-priority-cont{
+    margin-left: 5rem;
+    width: 35%;
+    height: 80%;
+    border: 1px solid red;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+.red{
+    width: 20%;
+    height: 80%;
+    background-color: red;
+}
+.blue{
+    width: 20%;
+    height: 80%;
+    background-color: blue;
+}
+.green{
+    width: 20%;
+    height: 80%;
+    background-color: green;
+}
+.purple{
+    width: 20%;
+    height: 80%;
+    background-color: purple;
+}
+.action-btn-cont{
+    margin: 2rem;
+    width: 15%;
+    height: 80%;
+    border: 1px solid rgb(47, 29, 206);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.add-btn{
+    width: 50%;
+    height: 100%;
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.remove-btn{
+    width: 50%;
+    height: 100%;
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.largeicon{
+    font-size: 1.8rem;
+}
+
+.main-cont{
+    border: 1px solid black;
+}
