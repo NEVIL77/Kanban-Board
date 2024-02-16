@@ -1,7 +1,6 @@
 body{
     width: 100%;
     height: 100%;
-    background-color: grey;
     margin: 0px;
     padding: 0px;
 }
@@ -15,6 +14,8 @@ header{
     display: flex;
     align-items: center;
     justify-content: start;
+    background-color: grey;
+
 }
 .toolbox-priority-cont{
     margin-left: 5rem;
@@ -75,6 +76,35 @@ header{
     font-size: 1.8rem;
 }
 
-.main-cont{
-    border: 1px solid black;
+.modal-cont{
+    width: 40rem;
+    height: 25rem;
+    border: 1px solid red;
+    position: fixed;
+    top: 25vh;
+    left: 25vw;
+    display: flex;
+    /* display: none; */
+}
+.textarea-cont{
+    width: 75%;
+    height: 100%;
+    padding: 1rem;
+}
+.priority-color-cont{
+    height: 100%;
+    width: 25%;
+    border: 1px solid rgb(241, 8, 222);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: pink;
+    align-items: center;
+}
+.color_modal{
+    width: 70%;
+    height: 15%;
+}
+.selected {
+    border: 4px solid yellow;
 }

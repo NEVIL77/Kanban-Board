@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,43 +9,57 @@
     <link rel="stylesheet" href="style.css">
 
 </head>
+
 <body>
-    
-    <!-- header toolbox container -->
-        <header class="toolbox-con">
-            <div class="toolbox-priority-cont">
 
-                <div class="color red"></div>
-                <div class="color blue"></div>
-                <div class="color green"></div>
-                <div class="color purple"></div>
+    <!--toolbox container -->
+    <header class="toolbox-con">
+        <div class="toolbox-priority-cont">
 
+            <div class="color red"></div>
+            <div class="color blue"></div>
+            <div class="color green"></div>
+            <div class="color purple"></div>
+
+        </div>
+
+        <div class="action-btn-cont">
+            <div class="add-btn">
+                <i class="fa-solid fa-plus largeicon"></i>
             </div>
-
-            <div class="action-btn-cont">
-                <div class="add-btn">
-                    <i class="fa-solid fa-plus largeicon"></i>
-                </div>
-                <div class="remove-btn">
-                    <i class="fa-solid fa-trash largeicon"></i>
-                </div>
+            <div class="remove-btn">
+                <i class="fa-solid fa-trash largeicon"></i>
             </div>
-        </header>
+        </div>
+    </header>
 
 
     <!-- main container -->
-        <main class="main-cont">
-            <div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </main>
+    <main class="main-cont">
+        <div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </main>
+
+    <!-- modal container -->
+    <div class="modal-cont">
+        <textarea class="textarea-cont"
+        placeholder="Enter Your Task"></textarea>
+        <div class="priority-color-cont">
+            <div class="color_modal red selected"></div>
+            <div class="color_modal blue"></div>
+            <div class="color_modal green"></div>
+            <div class="color_modal purple"></div>
+        </div>
     </div>
+
 
 
 
 
     <script src="script.js"></script>
 </body>
+
 </html>

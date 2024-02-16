@@ -15,3 +15,13 @@ We have to create frontend only digital Kanban Board
     * hide that popup
 * make ticket servive the Reload and browser/tab closure 
     * Local Strorage   
+
+
+
+task and its solution
+
+task : when i click on plus btn modal appeasred and desappeared
+solution : display non and display block
+
+task : when i click on the plus bydefault color should be red 
+solution :add selected class to red and remove and add class to class 
