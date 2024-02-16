@@ -10,7 +10,7 @@ body{
 header{
     width: 100%;
     height: 5rem;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     align-items: center;
     justify-content: start;
@@ -51,7 +51,7 @@ header{
     margin: 2rem;
     width: 15%;
     height: 80%;
-    border: 1px solid rgb(47, 29, 206);
+    /* border: 1px solid rgb(47, 29, 206); */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -79,12 +79,12 @@ header{
 .modal-cont{
     width: 40rem;
     height: 25rem;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     position: fixed;
     top: 25vh;
     left: 25vw;
     display: flex;
-    /* display: none; */
+    display: none;
 }
 .textarea-cont{
     width: 75%;
