@@ -44,6 +44,7 @@ textArea.addEventListener("keypress",function(e){
             createTicket( task, taskColor);
         } 
         textArea.value ="" ;
+        
     }
 })
 
@@ -56,5 +57,23 @@ function createTicket( task, taskColor ){
     <div class="ticket-area">${task}</div>
     <i class="fa-solid fa-lock lock"></i>` ;
     mainContainer.appendChild(ticketContainer) ;
+
+    const lockButton = ticketContainer.querySelector(".lock")
+    handleLock(lockButton) ;
     
+}
+
+function handleLock(lockButton){
+    lockButton.addEventListener("click",function(){
+        const isLock = lockButton.classList.contains("fa-lock") ;
+
+        if(isLock){
+            lockButton.classList.remove("fa-lock") ;
+            lockButton.classList.add("fa-lock-open") ;
+        }
+        else{
+            lockButton.classList.remove("fa-lock-open") ;
+            lockButton.classList.add("fa-lock") ;
+        }
+    })
 }
