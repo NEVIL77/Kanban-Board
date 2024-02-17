@@ -2,6 +2,8 @@ const modalContainer = document.querySelector(".modal-cont") ;
 const addBtn         = document.querySelector(".add-btn") ;
 const colorModal     = document.querySelectorAll(".color_modal")
 const textArea       = document.querySelector(".textarea-cont")
+const mainContainer  = document.querySelector(".main-cont")
+const uid = new ShortUniqueId({ length: 4 });
 
 
 // when you click on add bytn ticket modal should appeared for ticket creation 
@@ -29,7 +31,30 @@ for(let i=0; i<colorModal.length; i++){
 }
 
 textArea.addEventListener("keypress",function(e){
+    
     if(e.key == "Enter"){
         modalContainer.style.display= "none" ;
+        const task = textArea.value ;
+        // console.log(text) ;
+        
+        const currentColor = modalContainer.querySelector(".selected") ;
+        const taskColor    = currentColor.getAttribute("currColor") ;
+        console.log(task,taskColor) ;
+        if(task){
+            createTicket( task, taskColor);
+        } 
+        textArea.value ="" ;
     }
 })
+
+function createTicket( task, taskColor ){
+    const ticketContainer = document.createElement("div") ;
+    ticketContainer.setAttribute("class","ticket-cont") ;
+    ticketContainer.innerHTML = 
+    `<div class="ticket-color ${taskColor} "></div>
+    <div class="ticket-id">${uid.rnd()}</div>
+    <div class="ticket-area">${task}</div>
+    <i class="fa-solid fa-lock lock"></i>` ;
+    mainContainer.appendChild(ticketContainer) ;
+    
+}
