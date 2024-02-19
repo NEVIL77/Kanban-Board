@@ -32,8 +32,14 @@ solution -
 2.loop on color modal which loop and how we remove the yellow class selected from class
 3.how we get which one is clicked and how we add selected class  
 
-4=task how can i toggle the lock and unlock
+4=task how can i toggle the lock and unlock and how do i know this clicked on which ticket
+Solution 
+    - how do i know -> we apply addEvnetListener to lock of every tickert     created when we create a ticket 
+    - how can i toggle -> remove classname and add class name
+5
+task = how to make tickcet editable when i click on the lock to unllock
+solu = textArea.setAttribute("contentEditable",true) ;
 
 main task
 
-1 => remove yello strip from color_modal and apply at modal_cont   which is clicked
+1 => remove yello strip from color_modal and apply at modal_cont   which is clicked 
