@@ -3,11 +3,18 @@ const addBtn         = document.querySelector(".add-btn") ;
 const colorModal     = document.querySelectorAll(".color_modal") ;
 const textArea       = document.querySelector(".textarea-cont") ;
 const mainContainer  = document.querySelector(".main-cont") ;
-const headerColor    = document.querySelectorAll(".color") ;
+const headerColor    = document.querySelectorAll(".toolbox-priority-cont .color") ;
 const uid = new ShortUniqueId({ length: 4 }); 
 
 
 const colorArray = ["red","blue","green","purple"];
+
+let ticketArr =  [] ;
+
+if( localStorage.getItem("tickerArr") != null ){
+    let strticketArr = localStorage.getItem("tickerArr") ;
+    ticketArr = JSON.parse(strticketArr);
+}
 
 // when you click on add bytn ticket modal should appeared for ticket creation 
 addBtn.addEventListener("click" , function(){
@@ -38,16 +45,13 @@ textArea.addEventListener("keypress",function(e){
     if(e.key == "Enter"){
         modalContainer.style.display= "none" ;
         const task = textArea.value ;
-        // console.log(text) ;
         
         const currentColor = modalContainer.querySelector(".selected") ;
         const taskColor    = currentColor.getAttribute("currColor") ;
-        console.log(task,taskColor) ;
         if(task){
             createTicket( task, taskColor);
         } 
         textArea.value ="" ;
-        
     }
 })
 
@@ -61,34 +65,78 @@ deleteBtn.addEventListener( "click", function(){
     if(isDelete){ 
         isDelete = !isDelete
         deleteBtn.style.background="" ;
-        console.log(isDelete)
     }
     else{
         isDelete = !isDelete
         deleteBtn.style.background="red" ;
-        console.log(isDelete)
     }
 })
-console.log(headerColor)
+    // filterColor Selection
 
 for(let i=0; i<headerColor.length; i++){
     let currHeadColor= headerColor[i] ;
 
-    currHeadColor.addEventListener("click",function(){
+    currHeadColor.addEventListener("click",function(e){
+        console.log("single clicked")
         for(let j=0; j<headerColor.length; j++){
             headerColor[j].classList.remove("selected")
         }
-        currHeadColor.classList.add("selected")
         
+        currHeadColor.classList.add("selected")
+
+        const currentCol= colorArray[i]
+        // console.log(currentCol)
+
+        filterTickets(currentCol) ;
     })
+    
 }
 
+    // filter tickets
+
+function filterTickets(currentCol){
+    // console.log("calledddd")
+    const ticketArr = mainContainer.querySelectorAll(".ticket-cont") ;
+    // console.log(ticketArr)
+
+
+    for(let i=0; i< ticketArr.length; i++){
+        let cTicket = ticketArr[i] ;
+        console.log(cTicket)
+        
+        let isPresent = cTicket.querySelector(`.${currentCol}`) ;
+        console.log(isPresent)
+
+
+        if(isPresent == null) {
+            cTicket.style.display="none" ;
+        }
+        else{
+            cTicket.style.display="block" ;
+        }
+    }
+}
+
+    // Remove Ticket Filter
+
+console.log(headerColor)    
+for (let i = 0; i < headerColor.length; i++) {
+    let c = headerColor[i];
+
+    c.addEventListener("dblclick", function () {
+        console.log("Double-clicked on header color element");
+    });
+}
+
+    // ticket creation
+
 function createTicket( task, taskColor ){
+    let id=uid.rnd() ;
     const ticketContainer = document.createElement("div") ;
     ticketContainer.setAttribute("class","ticket-cont") ;
     ticketContainer.innerHTML = 
     `<div class="ticket-color ${taskColor} "></div>
-    <div class="ticket-id">${uid.rnd()}</div>
+    <div class="ticket-id">${id}</div>
     <div class="ticket-area">${task}</div>
     <i class="fa-solid fa-lock lock"></i>` ;
     mainContainer.appendChild(ticketContainer) ;
@@ -97,14 +145,32 @@ function createTicket( task, taskColor ){
     const textArea   = ticketContainer.querySelector(".ticket-area") 
     const ticketColor= ticketContainer.querySelector(".ticket-color")
     const ticketCont = ticketContainer.querySelector(".ticket-cont")
-    console.log(ticketCont)
     
     handleLock(lockButton,textArea) ;
     handleColorChange(ticketColor);
     handleDelete(ticketContainer) ;
 
+    let ticketObj = {
+        id : id,
+        color : taskColor,
+        task : task,
+    }
+    ticketArr.push(ticketObj) ;
+    setLocalStorage() ;
+    
 }
 
+    // setLocalStorage Function
+
+function setLocalStorage(){
+    console.log("setCalled")
+    let strticketArr = JSON.stringify(ticketArr) ;
+    console.log( strticketArr )
+
+    localStorage.setItem("ticketArr" , strticketArr);
+}
+
+    // handle lock
 
 function handleLock(lockButton, textArea){
     lockButton.addEventListener("click",function(){
@@ -122,6 +188,9 @@ function handleLock(lockButton, textArea){
         }
     })
 }
+
+    // modalcolor change
+
 function handleColorChange(ticketColor){
 
     ticketColor.addEventListener("click",function(){
@@ -136,6 +205,8 @@ function handleColorChange(ticketColor){
 
     })
 }
+
+    // delete 
 
 function handleDelete(ticketContainer){
 
