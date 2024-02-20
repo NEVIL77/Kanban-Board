@@ -147,7 +147,7 @@ function createTicket( task, taskColor ){
     const ticketCont = ticketContainer.querySelector(".ticket-cont")
     
     handleLock(lockButton,textArea) ;
-    handleColorChange(ticketColor);
+    handleColorChange(ticketColor,id);
     handleDelete(ticketContainer,id) ;
 
     let ticketObj = {
@@ -191,7 +191,7 @@ function handleLock(lockButton, textArea){
 
     // modalcolor change
 
-function handleColorChange(ticketColor){
+function handleColorChange(ticketColor,id){
 
     ticketColor.addEventListener("click",function(){
         
@@ -202,6 +202,16 @@ function handleColorChange(ticketColor){
 
         ticketColor.classList.remove(cColor) ;
         ticketColor.classList.add(nextColor) ;
+
+        for(let i=0; i<ticketArr.length; i++){
+            let currObj = ticketArr[i] ;
+
+            if(currObj.id == id ){
+                let index= i ;
+                ticketArr[i].color = nextColor ;
+                setLocalStorage() ;
+            }
+        }
 
     })
 }
@@ -217,16 +227,16 @@ function handleDelete(ticketContainer, id){
                 ticketContainer.remove() ;
             }
             let allTicket = localStorage.getItem("ticketArr") ;
-            console.log( typeof(allTicket) ) 
+            // console.log( typeof(allTicket) ) 
             allTicket = JSON.parse(allTicket)
-            console.log(typeof(allTicket)) 
+            // console.log(typeof(allTicket)) 
 
             for(let i =0; i< allTicket.length; i++){
                 let cObj = allTicket[i] ;
                 if(cObj.id == id){
                     let index = i ;
                     allTicket.splice(index,1);
-                    console.log(allTicket);
+                    // console.log(allTicket);
                     ticketArr = allTicket ;
                     setLocalStorage() ;
                 }
