@@ -148,7 +148,7 @@ function createTicket( task, taskColor ){
     
     handleLock(lockButton,textArea) ;
     handleColorChange(ticketColor);
-    handleDelete(ticketContainer) ;
+    handleDelete(ticketContainer,id) ;
 
     let ticketObj = {
         id : id,
@@ -208,13 +208,28 @@ function handleColorChange(ticketColor){
 
     // delete 
 
-function handleDelete(ticketContainer){
+function handleDelete(ticketContainer, id){
 
     ticketContainer.addEventListener("click",function(){
         if(isDelete){
             const ask =confirm("Do you want to delete") ;
             if(ask){
                 ticketContainer.remove() ;
+            }
+            let allTicket = localStorage.getItem("ticketArr") ;
+            console.log( typeof(allTicket) ) 
+            allTicket = JSON.parse(allTicket)
+            console.log(typeof(allTicket)) 
+
+            for(let i =0; i< allTicket.length; i++){
+                let cObj = allTicket[i] ;
+                if(cObj.id == id){
+                    let index = i ;
+                    allTicket.splice(index,1);
+                    console.log(allTicket);
+                    ticketArr = allTicket ;
+                    setLocalStorage() ;
+                }
             }
         }
     })
